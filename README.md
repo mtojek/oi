@@ -8,7 +8,7 @@ Status: **Done** (waiting for feedback)
 
 **oi**  is a command-line utility for searching plain-text data sets for next lines defined in patterns file. Its name comes from an abbreviation: *ordered insections*, which explain the way of filtering the given data set.
 
-So far, no regular expressions are supported and the matching line must occur only one time.
+So far, no regular expressions are supported and the matching line must occur only once.
 
 ## Quickstart
 
