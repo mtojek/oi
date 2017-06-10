@@ -15,10 +15,10 @@ So far, no regular expressions are supported and the matching line must occur on
 Download, install **oi** and filter given data set:
 ```bash
 go get github.com/mtojek/oi
-cat data | oi -f patterns
+cat data | oi -p patterns
 ```
 
-## Filter request logs faster than *nix "grep" (11 min to 15 ms)
+## Filter request logs faster than *nix "grep" (11 min to <50 ms)
 
 Default release of *nix grep does not support filtering data sets by matching only one pattern from the given pattern set. It means that I you want to filter a huge log file by providing a list of request IDs, every line of the log file will be compared with all request IDs. It's definetely a set intersection but super-inefficient.
 
@@ -46,7 +46,7 @@ B2CD083A-C18A-460C-8C8F-D5072CFB0515 9
 Let's filter 1/3 of requests (16666 rows). The patterns file contains the following request IDs: 
 
 ```bash
-$ cat pattern
+$ cat patterns
 215EDC9D-3C49-43C1-8F27-53DE904BF6ED
 FF74AD5A-42C5-4DC3-AFA1-FDF3BD6DB14D
 B2CD083A-C18A-460C-8C8F-D5072CFB0515
@@ -63,7 +63,7 @@ B2CD083A-C18A-460C-8C8F-D5072CFB0515
 The default *grep* usage for such data intersection is:
 
 ```bash
-$ time cat data | grep -f pattern > output
+$ time cat data | grep -f patterns > output
 real	11m5.165s
 user	10m55.544s
 sys	0m1.060s
@@ -75,13 +75,13 @@ The operation takes 11 min to finish and the tool performs a plenty of unnecessa
 Let's try to do the same with **oi**:
 
 ```bash
-$ time cat data | oi -f pattern > output
-real	0m0.015s
-user	0m0.008s
-sys	0m0.009s
+$ time cat data | oi -p patterns > output
+real	0m0.048s
+user	0m0.014s
+sys	0m0.030s
 ```
 
-The total time decreased to 15 ms. Nice, let's start using **oi**!
+The total time decreased <50 ms. Nice, let's start using **oi**!
 
 ## Contact
 
