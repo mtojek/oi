@@ -20,7 +20,7 @@ cat data | oi -p patterns
 
 ## Filter request logs faster than *nix "grep" (11 min to <50 ms)
 
-Default release of *nix grep does not support filtering data sets by matching only one pattern from the given pattern set. It means that I you want to filter a huge log file by providing a list of request IDs, every line of the log file will be compared with all request IDs. It's definetely a set intersection but super-inefficient.
+Default release of *nix grep does not support filtering data sets by matching only one pattern from the given pattern set. It means that if you want to filter a huge log file by providing a list of request IDs, every line of the log file will be compared with all request IDs. It's definetely a set intersection but super-inefficient.
 
 **oi** operates differenly. Provided that a request ID appears only once in a log file and patterns file contains all request IDs to be filtered in the proper order, **the number of comparisons for an every log line is decreased to 1 operation instead of N** (number of request IDs to be filtered).
 
