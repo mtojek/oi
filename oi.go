@@ -12,7 +12,7 @@ const (
 	NOT_ALL_PATTERNS_FOUND = 3
 )
 
-func OrderedIntersect(data io.Reader, patterns io.Reader, filtered io.Writer) int {
+func OrderedIntersection(data io.Reader, patterns io.Reader, filtered io.Writer) int {
 	dataScanner := bufio.NewScanner(data)
 	patternsScanner := bufio.NewScanner(patterns)
 

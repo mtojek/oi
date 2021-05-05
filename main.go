@@ -22,8 +22,9 @@ func main() {
 		if err != nil {
 			log.Fatalf("Error occurred while opening data_file: %v", err)
 		}
+		defer dataFile.Close()
 	}
 
-	status := OrderedIntersect(dataFile, patternsFile, os.Stdout)
+	status := OrderedIntersection(dataFile, patternsFile, os.Stdout)
 	os.Exit(status)
 }

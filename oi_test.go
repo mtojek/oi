@@ -69,7 +69,7 @@ func check(t *testing.T, dataFile, patternsFile, expectedOutput string, expected
 	patterns := strings.NewReader(patternsFile)
 
 	filtered := new(bytes.Buffer)
-	actualStatus := OrderedIntersect(data, patterns, filtered)
+	actualStatus := OrderedIntersection(data, patterns, filtered)
 	actual := filtered.String()
 
 	if expectedOutput != actual {
