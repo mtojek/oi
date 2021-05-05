@@ -24,6 +24,6 @@ func main() {
 		}
 	}
 
-	status := OrderedIntersect(dataFile, patternsFile, os.Stdout)
+	status := OrderedIntersection(dataFile, patternsFile, os.Stdout)
 	os.Exit(status)
 }
