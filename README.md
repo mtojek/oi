@@ -6,13 +6,13 @@ Status: **Done** (waiting for feedback)
 
 ## Description
 
-**oi**  is a command-line utility for searching plain-text data sets for next lines defined in patterns file. Its name comes from an abbreviation: *ordered insections*, which explain the way of filtering the given data set.
+`oi` is a command-line utility for searching plain-text data sets for next lines defined in patterns file. Its name comes from an abbreviation: *ordered intersections*, which explains the way of filtering the given data set.
 
 So far, no regular expressions are supported and the matching line must occur only once.
 
 ## Quickstart
 
-Download, install **oi** and filter given data set:
+Download, install `oi` and filter given data set:
 ```bash
 go get github.com/mtojek/oi
 cat data | oi -p patterns
@@ -20,13 +20,13 @@ cat data | oi -p patterns
 
 ## Filter request logs faster than *nix "grep" (11 min to <50 ms)
 
-Default release of *nix grep does not support filtering data sets by matching only one pattern from the given pattern set. It means that if you want to filter a huge log file by providing a list of request IDs, every line of the log file will be compared with all request IDs. It's definetely a set intersection but super-inefficient.
+Default release of *nix `grep` does not support filtering data sets by matching only one pattern from the given pattern set. It means that if you want to filter a huge log file by providing a list of request IDs, every line of the log file will be compared with all request IDs. It's definitely a set intersection but super-inefficient.
 
-**oi** operates differenly. Provided that a request ID appears only once in a log file and patterns file contains all request IDs to be filtered in the proper order, **the number of comparisons for an every log line is decreased to 1 operation instead of N** (number of request IDs to be filtered).
+`oi` operates differently. Provided that a request ID appears only once in a log file and patterns file contains all request IDs to be filtered in the proper order, **the number of comparisons for an every log line is decreased to 1 operation instead of N** (number of request IDs to be filtered).
 
 ### Sample usage
 
-The *data* file contains 50000 of request log rows and it's total size is 2MB (2138894 B):
+The *data* file contains 50000 of request log records and its total size is 2MB (2138894 B):
 
 ```bash
 $ cat data
@@ -60,7 +60,7 @@ B2CD083A-C18A-460C-8C8F-D5072CFB0515
 ...
 ```
 
-The default *grep* usage for such data intersection is:
+The default `grep` usage for such data intersection is:
 
 ```bash
 $ time cat data | grep -f patterns > output
@@ -70,9 +70,9 @@ sys	0m1.060s
 ```
 Notice: tested on Macbook Pro 2.6 GHz i5, 8GB DDR3
 
-The operation takes 11 min to finish and the tool performs a plenty of unnecessary comparison. 
+The operation takes 11 min to finish and the tool performs a plenty of unnecessary comparisons. 
 
-Let's try to do the same with **oi**:
+Let's try to do the same with `oi`:
 
 ```bash
 $ time cat data | oi -p patterns > output
@@ -81,7 +81,7 @@ user	0m0.014s
 sys	0m0.030s
 ```
 
-The total time decreased <50 ms. Nice, let's start using **oi**!
+The total time decreased to <50 ms. Nice, let's start using `oi`!
 
 ## Contact
 
